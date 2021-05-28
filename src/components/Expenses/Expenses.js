@@ -9,10 +9,7 @@ import ExpensesList from "./ExpensesList";
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2020");
 
-  const expenseFilterHandler = (year) => {
-    console.log(year);
-    setFilteredYear(year);
-  };
+  const expenseFilterHandler = (year) => setFilteredYear(year);
 
   const filteredExpenses = props.expenses.filter((el) => {
     const expenseYear = el.date.getFullYear();
