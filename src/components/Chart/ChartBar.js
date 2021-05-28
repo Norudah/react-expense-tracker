@@ -1,10 +1,12 @@
 import "./ChartBar.css";
 
 const ChartBar = (props) => {
+  const barHeight = (props.value / props.maxValue) * 100 + "%";
+
   return (
     <div className="chart-bar">
       <div className="chart-bar__inner">
-        <div className="chart-bar__fill" style={{ height: "100%" }}></div>
+        <div className="chart-bar__fill" style={{ height: barHeight }}></div>
       </div>
       <div className="chart-bar__label">{props.label}</div>
     </div>
