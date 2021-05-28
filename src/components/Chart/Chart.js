@@ -4,18 +4,18 @@ import ChartBar from "./ChartBar";
 
 // Model of the empty chartBars by month and their values
 const monthBars = [
-  { month: "Janvier", value: 0 },
-  { month: "Février", value: 0 },
-  { month: "Mars", value: 0 },
-  { month: "Avril", value: 0 },
+  { month: "Jan", value: 0 },
+  { month: "Fév", value: 0 },
+  { month: "Mar", value: 0 },
+  { month: "Avr", value: 0 },
   { month: "Mai", value: 0 },
-  { month: "Juin", value: 0 },
-  { month: "Juillet", value: 0 },
-  { month: "Aout", value: 0 },
-  { month: "Septembre", value: 0 },
-  { month: "Octobre", value: 0 },
-  { month: "Novembre", value: 0 },
-  { month: "Décembre", value: 0 },
+  { month: "Jui", value: 0 },
+  { month: "Jul", value: 0 },
+  { month: "Aou", value: 0 },
+  { month: "Sep", value: 0 },
+  { month: "Oct", value: 0 },
+  { month: "Nov", value: 0 },
+  { month: "Déc", value: 0 },
 ];
 
 const Chart = (props) => {
@@ -25,14 +25,17 @@ const Chart = (props) => {
     monthBars[monthIndex].value += expense.amount;
   });
 
-  const maxTotalExpense = 1000;
+  // Get maximum value among the expenses we've got.
+  const expensesValues = props.expenses.map((expense) => +expense.amount);
+  const maxValue = Math.max(...expensesValues);
 
+  // Create one ChartBar per month inside monthBars with the calculated data
   const chartBars = monthBars.map((chartBar) => (
     <ChartBar
       key={chartBar.month}
       label={chartBar.month}
       value={chartBar.value}
-      maxValue={maxTotalExpense}
+      maxValue={maxValue}
     />
   ));
 
